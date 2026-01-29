@@ -1,4 +1,4 @@
-def print_hello_world() -> None:
+def print_hello() -> None:
     """
     Prints a simple greeting message to the console.
     """
