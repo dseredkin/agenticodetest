@@ -1,13 +1,16 @@
-"""Tests for calculator module."""
+"""
+Tests for the calculator module.
+"""
 
-from src.calculator import add, subtract
-
-
-def test_add():
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
+import pytest
+from src.calculator import fibonacci_sequence
 
 
-def test_subtract():
-    assert subtract(5, 3) == 2
-    assert subtract(0, 5) == -5
+def test_fibonacci_sequence() -> None:
+    assert fibonacci_sequence(0) == []
+    assert fibonacci_sequence(1) == [0]
+    assert fibonacci_sequence(2) == [0, 1]
+    assert fibonacci_sequence(5) == [0, 1, 1, 2, 3]
+
+    with pytest.raises(ValueError):
+        fibonacci_sequence(-1)
