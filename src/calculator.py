@@ -1,9 +1,11 @@
-from collections.abc import Callable
+from collections.abc import (
+    Callable as TypingCallable,  # To avoid confusion with collections
+)
 
 
 def newtons_method(
-    f: Callable[[float], float],
-    df: Callable[[float], float],
+    f: TypingCallable[[float], float],
+    df: TypingCallable[[float], float],
     x0: float,
     tol: float = 1e-6,
     max_iter: int = 100,
@@ -22,8 +24,14 @@ def newtons_method(
         The approximated root of the function.
 
     Raises:
-        ValueError: If the method does not converge or if the derivative is zero.
+        ValueError: If the method does not converge, if the derivative is zero,
+                    or if f or df are not callable.
     """
+    if not callable(f):
+        raise ValueError("f must be a callable function")
+    if not callable(df):
+        raise ValueError("df must be a callable function")
+
     x = x0
     for _ in range(max_iter):
         fx = f(x)
