@@ -1,6 +1,5 @@
 def divide(a: float, b: float) -> float:
-    """
-    Divide two numbers.
+    """Divide two numbers.
 
     Args:
         a (float): The numerator.
