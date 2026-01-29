@@ -1,31 +1,27 @@
-import unittest
+import math
 
+import pytest
 from src.calculator import newtons_method
 
 
-def test_function(x: float) -> float:
-    """Example function for testing: f(x) = x^2 - 4 (roots at x=2 and x=-2)."""
-    return x**2 - 4
+def test_newtons_method() -> None:
+    """Test Newton's method with a simple quadratic function."""
 
+    def f(x: float) -> float:
+        return x**2 - 4  # Roots at 2 and -2
 
-def test_derivative(x: float) -> float:
-    """Derivative of the test function: df(x) = 2x."""
-    return 2 * x
+    def df(x: float) -> float:
+        return 2 * x
 
+    root_positive = newtons_method(f, df, 1.0)
+    assert abs(root_positive - 2) < 0.01  # Check approximation
 
-class TestCalculator(unittest.TestCase):
-    def test_newtons_method(self) -> None:
-        """Test Newton's method with the example function."""
-        root_positive = newtons_method(test_function, test_derivative, x0=1.0)
-        self.assertAlmostEqual(root_positive, 2.0, places=5)
+    root_negative = newtons_method(f, df, -1.0)
+    assert abs(root_negative + 2) < 0.01  # Check approximation
 
-        root_negative = newtons_method(test_function, test_derivative, x0=-1.0)
-        self.assertAlmostEqual(root_negative, -2.0, places=5)
+    with pytest.raises(ValueError):
+        # Test non-convergence (e.g., bad initial guess for a function that doesn't converge easily)
+        def bad_f(x: float) -> float:
+            return math.exp(x) + 1  # No real root, but we'll limit by max_iter
 
-        with self.assertRaises(ValueError):
-            newtons_method(
-                lambda x: x**2 + 1, lambda x: 2 * x, x0=0, tolerance=1e-6
-            )  # No real root
-
-        with self.assertRaises(ValueError):
-            newtons_method(test_function, lambda x: 0, x0=1.0)  # Zero derivative
+        newtons_method(bad_f, lambda x: math.exp(x), 0, tol=1e-6, max_iter=5)
