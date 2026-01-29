@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run tests
+        run: uv run pytest tests/ -v
+
+      - name: Run linting (if ruff available)
+        run: |
+          if uv run python -c "import ruff" 2>/dev/null; then
+            uv run ruff check src/
+          else
+            echo "Ruff not installed, skipping"
+          fi
+        continue-on-error: true
+
