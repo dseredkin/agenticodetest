@@ -1,11 +1,20 @@
-"""Basic calculator operations."""
+"""Module for basic arithmetic operations."""
 
 
-def add(a: float, b: float) -> float:
-    """Add two numbers."""
-    return a + b
+def divide(a: float, b: float) -> float:
+    """
+    Divide two numbers.
 
+    Args:
+        a: The numerator.
+        b: The denominator.
 
-def subtract(a: float, b: float) -> float:
-    """Subtract b from a."""
-    return a - b
+    Returns:
+        The result of a divided by b.
+
+    Raises:
+        ValueError: If b is zero.
+    """
+    if b == 0:
+        raise ValueError("Denominator cannot be zero.")
+    return a / b
