@@ -5,32 +5,32 @@ def newtons_method(
     f: Callable[[float], float],
     df: Callable[[float], float],
     x0: float,
-    tolerance: float = 1e-6,
+    tol: float = 1e-6,
     max_iter: int = 100,
 ) -> float:
     """
-    Implements Newton's method to find the root of a function f(x) = 0.
+    Approximates the root of a function using Newton's method.
 
     Args:
         f: The function for which to find the root.
         df: The derivative of the function f.
         x0: The initial guess for the root.
-        tolerance: The convergence tolerance.
-        max_iter: The maximum number of iterations.
+        tol: The tolerance for convergence (default: 1e-6).
+        max_iter: The maximum number of iterations (default: 100).
 
     Returns:
-        The approximate root of the function.
+        The approximated root of the function.
 
     Raises:
-        ValueError: If the derivative is zero or maximum iterations are exceeded.
+        ValueError: If the method does not converge or if the derivative is zero.
     """
     x = x0
     for _ in range(max_iter):
         fx = f(x)
-        if abs(fx) < tolerance:
+        if abs(fx) < tol:
             return x
         dfx = df(x)
         if dfx == 0:
-            raise ValueError("Derivative is zero; no solution found.")
+            raise ValueError("Derivative is zero")
         x = x - fx / dfx
-    raise ValueError("Exceeded maximum iterations; no solution found.")
+    raise ValueError("Did not converge")
