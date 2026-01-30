@@ -1,6 +1,6 @@
 import unittest
 
-from src.calculator import add
+from src.calculator import add, subtract
 
 
 class TestCalculator(unittest.TestCase):
@@ -19,3 +19,17 @@ class TestCalculator(unittest.TestCase):
             add(2.0, None)
         with self.assertRaises(ValueError):
             add(None, None)
+
+    def test_subtract_success(self) -> None:
+        """Test successful subtraction of two numbers."""
+        result = subtract(5.0, 3.0)
+        self.assertEqual(result, 2.0)
+
+    def test_subtract_with_none(self) -> None:
+        """Test that subtracting with None raises ValueError."""
+        with self.assertRaises(ValueError):
+            subtract(None, 3.0)
+        with self.assertRaises(ValueError):
+            subtract(5.0, None)
+        with self.assertRaises(ValueError):
+            subtract(None, None)
