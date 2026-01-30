@@ -1,45 +1,35 @@
-"""Module for calculator operations including addition, subtraction, and division."""
+"""Module for basic arithmetic operations."""
 
 
 def add(a: float, b: float) -> float:
-    """Add two numbers.
-
-    Args:
-        a (float): The first number.
-        b (float): The second number.
-
-    Returns:
-        float: The sum of a and b.
-    """
+    """Add two numbers."""
     return a + b
 
 
 def subtract(a: float, b: float) -> float:
-    """Subtract two numbers.
-
-    Args:
-        a (float): The first number.
-        b (float): The second number.
-
-    Returns:
-        float: The result of a minus b.
-    """
+    """Subtract the second number from the first."""
     return a - b
 
 
+def multiply(a: float, b: float) -> float:
+    """Multiply two numbers."""
+    return a * b
+
+
 def divide(a: float, b: float) -> float:
-    """Divide two numbers.
+    """
+    Divide the first number by the second.
 
     Args:
         a (float): The numerator.
         b (float): The denominator.
 
-    Returns:
-        float: The result of a divided by b.
-
     Raises:
         ValueError: If b is zero.
+
+    Returns:
+        float: The result of a divided by b.
     """
     if b == 0:
-        raise ValueError("Denominator cannot be zero.")
+        raise ValueError("Division by zero is not allowed.")
     return a / b
