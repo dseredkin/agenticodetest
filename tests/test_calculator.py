@@ -1,13 +1,15 @@
-import pytest
+import unittest
+
 from src.calculator import divide
 
 
-def test_divide() -> None:
-    """Test successful division."""
-    assert divide(10, 2) == 5.0
+class TestCalculator(unittest.TestCase):
+    def test_divide_success(self) -> None:
+        """Test successful division."""
+        assert divide(10.0, 2.0) == 5.0
+        assert divide(20.0, 5.0) == 4.0
 
-
-def test_divide_by_zero() -> None:
-    """Test division by zero raises an error."""
-    with pytest.raises(ValueError):
-        divide(10, 0)
+    def test_divide_by_zero(self) -> None:
+        """Test division by zero raises an error."""
+        with self.assertRaises(ValueError):
+            divide(10.0, 0)
