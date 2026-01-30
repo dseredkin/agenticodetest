@@ -1,20 +1,19 @@
-"""Module for basic calculator operations."""
+"""Calculator module providing basic arithmetic operations."""
 
 
 def divide(a: float, b: float) -> float:
-    """
-    Perform division of two numbers.
+    """Divide two numbers.
 
     Args:
-        a (float): The numerator.
-        b (float): The denominator.
+        a: The numerator.
+        b: The denominator. Must not be zero.
 
     Returns:
-        float: The result of a divided by b.
+        The result of a divided by b.
 
     Raises:
         ValueError: If b is zero.
     """
     if b == 0:
-        raise ValueError("Division by zero is not allowed")
+        raise ValueError("Denominator cannot be zero.")
     return a / b
