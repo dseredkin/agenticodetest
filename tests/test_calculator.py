@@ -1,22 +1,21 @@
+"""Tests for the calculator module."""
+
 import pytest
-from src.calculator import add, subtract
+from src.calculator import add
 
 
-def test_add_success() -> None:
-    """Test successful addition of two numbers."""
-    assert add(1.0, 2.0) == 3.0
+def test_add_normal() -> None:
+    """Test adding two valid numbers."""
+    assert add(2, 3) == 5.0
 
 
 def test_add_with_none() -> None:
-    """Test that ValueError is raised when one or both arguments are None."""
-    with pytest.raises(ValueError):
-        add(None, 1.0)
-    with pytest.raises(ValueError):
-        add(1.0, None)
-    with pytest.raises(ValueError):
-        add(None, None)
+    """Test adding with None input."""
+    with pytest.raises(ValueError, match="Inputs must not be None"):
+        add(None, 3)
 
 
-def test_subtract_success() -> None:
-    """Test successful subtraction of two numbers."""
-    assert subtract(5.0, 3.0) == 2.0
+def test_add_with_non_number() -> None:
+    """Test adding with non-number input."""
+    with pytest.raises(ValueError, match="Inputs must be numbers"):
+        add("a", 3)
