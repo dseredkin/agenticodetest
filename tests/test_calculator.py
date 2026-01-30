@@ -1,12 +1,26 @@
-"""Tests for the calculator module."""
+"""Unit tests for the calculator module."""
 
-import pytest
+import unittest
+
 from src.calculator import divide
 
 
-def test_divide() -> None:
-    """Test the divide function."""
-    assert divide(10, 2) == 5.0
-    assert divide(15, 3) == 5.0
-    with pytest.raises(ValueError):
-        divide(10, 0)
+class TestCalculator(unittest.TestCase):
+    """Test cases for calculator functions."""
+
+    def test_divide_success(self) -> None:
+        """Test successful division."""
+        assert divide(10.0, 2.0) == 5.0
+        assert divide(15.0, 3.0) == 5.0
+        assert divide(0.0, 5.0) == 0.0
+
+    def test_divide_by_zero(self) -> None:
+        """Test division by zero raises an error."""
+        with self.assertRaises(ValueError):
+            divide(10.0, 0.0)
+        with self.assertRaises(ValueError):
+            divide(0.0, 0.0)
+
+
+if __name__ == "__main__":
+    unittest.main()
