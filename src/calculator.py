@@ -1,6 +1,3 @@
-"""Module for basic calculator operations."""
-
-
 def divide(a: float, b: float) -> float:
     """
     Divide two numbers.
@@ -16,5 +13,5 @@ def divide(a: float, b: float) -> float:
         ValueError: If b is zero.
     """
     if b == 0:
-        raise ValueError("Cannot divide by zero")
+        raise ValueError("Denominator cannot be zero")
     return a / b
