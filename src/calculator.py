@@ -1,19 +1,22 @@
-def add(a: float | None, b: float | None) -> float | None:
-    """
-    Add two numbers.
+def add(a: float | None, b: float | None) -> float:
+    """Add two numbers.
 
     Args:
-        a: The first number to add.
-        b: The second number to add.
+        a: The first number.
+        b: The second number.
 
     Returns:
-        The sum of a and b if both are valid numbers.
+        The sum of a and b.
 
     Raises:
-        ValueError: If either a or b is None.
+        ValueError: If either a or b is None or not a number.
     """
     if a is None:
-        raise ValueError("The first argument cannot be None.")
+        raise ValueError("Argument a cannot be None")
     if b is None:
-        raise ValueError("The second argument cannot be None.")
-    return a + b
+        raise ValueError("Argument b cannot be None")
+    if not isinstance(a, (int, float)):
+        raise ValueError("Argument a must be a number")
+    if not isinstance(b, (int, float)):
+        raise ValueError("Argument b must be a number")
+    return float(a) + float(b)

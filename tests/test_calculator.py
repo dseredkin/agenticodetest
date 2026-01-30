@@ -1,24 +1,26 @@
-import unittest
-
+import pytest
 from src.calculator import add
 
 
-class TestCalculator(unittest.TestCase):
-    def test_add_valid_numbers(self) -> None:
-        """Test adding two valid numbers."""
-        assert add(1.0, 2.0) == 3.0
+def test_add_success() -> None:
+    """Test successful addition of two numbers."""
+    assert add(1, 2) == 3.0
+    assert add(1.5, 2.5) == 4.0
 
-    def test_add_with_none_first(self) -> None:
-        """Test adding when the first argument is None."""
-        with self.assertRaises(ValueError):
-            add(None, 1.0)
 
-    def test_add_with_none_second(self) -> None:
-        """Test adding when the second argument is None."""
-        with self.assertRaises(ValueError):
-            add(1.0, None)
+def test_add_with_none() -> None:
+    """Test addition with None inputs."""
+    with pytest.raises(ValueError, match="Argument a cannot be None"):
+        add(None, 1)
+    with pytest.raises(ValueError, match="Argument b cannot be None"):
+        add(1, None)
+    with pytest.raises(ValueError, match="Argument a cannot be None"):
+        add(None, None)
 
-    def test_add_with_both_none(self) -> None:
-        """Test adding when both arguments are None."""
-        with self.assertRaises(ValueError):
-            add(None, None)
+
+def test_add_with_non_number() -> None:
+    """Test addition with non-numeric inputs."""
+    with pytest.raises(ValueError, match="Argument a must be a number"):
+        add("a", 1)
+    with pytest.raises(ValueError, match="Argument b must be a number"):
+        add(1, "b")
