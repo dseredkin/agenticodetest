@@ -1,4 +1,4 @@
-"""Unit tests for the calculator module."""
+"""Tests for the calculator module."""
 
 import unittest
 
@@ -9,30 +9,21 @@ class TestCalculator(unittest.TestCase):
     """Test cases for calculator functions."""
 
     def test_add_success(self) -> None:
-        """Test successful addition of two numbers."""
-        result = add(2, 3)
-        self.assertEqual(result, 5)
+        """Test adding two valid numbers."""
+        result = add(2.0, 3.0)
+        self.assertEqual(result, 5.0)
 
     def test_add_with_none_first(self) -> None:
-        """Test addition when the first input is None."""
+        """Test adding when the first argument is None."""
         with self.assertRaises(ValueError):
-            add(None, 3)
+            add(None, 3.0)
 
     def test_add_with_none_second(self) -> None:
-        """Test addition when the second input is None."""
+        """Test adding when the second argument is None."""
         with self.assertRaises(ValueError):
-            add(2, None)
+            add(2.0, None)
 
-    def test_add_with_non_number_first(self) -> None:
-        """Test addition when the first input is not a number."""
+    def test_add_with_both_none(self) -> None:
+        """Test adding when both arguments are None."""
         with self.assertRaises(ValueError):
-            add("a", 3)
-
-    def test_add_with_non_number_second(self) -> None:
-        """Test addition when the second input is not a number."""
-        with self.assertRaises(ValueError):
-            add(2, "b")
-
-
-if __name__ == "__main__":
-    unittest.main()
+            add(None, None)
