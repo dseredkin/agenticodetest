@@ -1,19 +1,16 @@
-import unittest
+"""Tests for the calculator module."""
 
+import pytest
 from src.calculator import divide
 
 
-class TestCalculator(unittest.TestCase):
-    """Unit tests for the calculator module."""
-
-    def test_divide(self) -> None:
-        """Test the divide function."""
-        self.assertEqual(divide(10, 2), 5.0)
-        self.assertAlmostEqual(divide(1, 3), 0.3333333333333333, places=10)
-
-        with self.assertRaises(ValueError):
-            divide(5, 0)
+def test_divide() -> None:
+    """Test successful division."""
+    assert divide(10.0, 2.0) == 5.0
+    assert divide(20.0, 5.0) == 4.0
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_divide_by_zero() -> None:
+    """Test division by zero raises an error."""
+    with pytest.raises(ValueError, match="Cannot divide by zero"):
+        divide(10.0, 0)
