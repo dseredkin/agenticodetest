@@ -1,3 +1,8 @@
+"""
+Module for basic arithmetic operations.
+"""
+
+
 def divide(a: float, b: float) -> float:
     """
     Divide two numbers.
