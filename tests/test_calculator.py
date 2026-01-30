@@ -1,19 +1,27 @@
-import unittest
+"""Tests for the calculator module."""
 
+import pytest
 from src.calculator import add
 
 
-class TestCalculator(unittest.TestCase):
-    def test_add_normal(self) -> None:
-        """Test adding two valid numbers."""
-        assert add(1, 2) == 3  # Integer addition
-        assert add(1.5, 2.5) == 4.0  # Float addition
+def test_add_numbers() -> None:
+    """Test adding two valid numbers."""
+    assert add(1.0, 2.0) == 3.0
 
-    def test_add_with_none(self) -> None:
-        """Test adding with None values."""
-        with self.assertRaises(ValueError):
-            add(None, 1)
-        with self.assertRaises(ValueError):
-            add(1, None)
-        with self.assertRaises(ValueError):
-            add(None, None)
+
+def test_add_with_none_first() -> None:
+    """Test adding when the first argument is None."""
+    with pytest.raises(ValueError):
+        add(None, 1.0)
+
+
+def test_add_with_none_second() -> None:
+    """Test adding when the second argument is None."""
+    with pytest.raises(ValueError):
+        add(1.0, None)
+
+
+def test_add_with_both_none() -> None:
+    """Test adding when both arguments are None."""
+    with pytest.raises(ValueError):
+        add(None, None)
