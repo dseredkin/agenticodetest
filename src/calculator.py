@@ -1,11 +1,17 @@
-"""Basic calculator operations."""
+def divide(a: float, b: float) -> float:
+    """
+    Divide two numbers.
 
+    Args:
+        a (float): The numerator.
+        b (float): The denominator.
 
-def add(a: float, b: float) -> float:
-    """Add two numbers."""
-    return a + b
+    Returns:
+        float: The result of a divided by b.
 
-
-def subtract(a: float, b: float) -> float:
-    """Subtract b from a."""
-    return a - b
+    Raises:
+        ValueError: If b is zero.
+    """
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b
