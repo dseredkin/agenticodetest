@@ -1,20 +1,21 @@
 """Module for basic calculator functions."""
 
 
-def add(a: float | None, b: float | None) -> float | None:
-    """
-    Add two numbers.
+def add(a: float, b: float) -> float:
+    """Add two numbers.
 
     Args:
-        a (float | None): The first number.
-        b (float | None): The second number.
+        a: The first number.
+        b: The second number.
 
     Returns:
-        float | None: The sum of a and b if both are numbers, otherwise None.
+        The sum of a and b.
 
     Raises:
         ValueError: If either a or b is None.
     """
-    if a is None or b is None:
-        raise ValueError("Both inputs must be numbers; None values are not allowed.")
+    if a is None:
+        raise ValueError("The first input must not be None")
+    if b is None:
+        raise ValueError("The second input must not be None")
     return a + b
