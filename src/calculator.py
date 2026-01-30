@@ -1,53 +1,19 @@
-"""Module for basic calculator functions."""
-
-
-def add(a: float, b: float) -> float:
+def add(a: float | None, b: float | None) -> float | None:
     """
-    Add two numbers.
+    Adds two numbers if both are provided and are numbers.
 
     Args:
-        a (float): The first number.
-        b (float): The second number.
+        a: The first number to add.
+        b: The second number to add.
 
     Returns:
-        float: The sum of a and b.
+        The sum of a and b if both are numbers, otherwise None.
 
     Raises:
         ValueError: If either a or b is None.
-        TypeError: If a or b is not a number.
     """
     if a is None:
-        raise ValueError("The first argument cannot be None")
+        raise ValueError("Argument 'a' must not be None")
     if b is None:
-        raise ValueError("The second argument cannot be None")
-    if not isinstance(a, (int, float)):
-        raise TypeError("The first argument must be a number")
-    if not isinstance(b, (int, float)):
-        raise TypeError("The second argument must be a number")
-    return float(a) + float(b)
-
-
-def subtract(a: float, b: float) -> float:
-    """
-    Subtract two numbers.
-
-    Args:
-        a (float): The first number.
-        b (float): The second number.
-
-    Returns:
-        float: The difference of a and b.
-
-    Raises:
-        ValueError: If either a or b is None.
-        TypeError: If a or b is not a number.
-    """
-    if a is None:
-        raise ValueError("The first argument cannot be None")
-    if b is None:
-        raise ValueError("The second argument cannot be None")
-    if not isinstance(a, (int, float)):
-        raise TypeError("The first argument must be a number")
-    if not isinstance(b, (int, float)):
-        raise TypeError("The second argument must be a number")
-    return float(a) - float(b)
+        raise ValueError("Argument 'b' must not be None")
+    return a + b
