@@ -1,4 +1,4 @@
-"""Unit tests for the calculator module."""
+"""Tests for the calculator module."""
 
 import unittest
 
@@ -6,7 +6,7 @@ from src.calculator import divide
 
 
 class TestCalculator(unittest.TestCase):
-    """Test cases for calculator functions."""
+    """Unit tests for calculator functions."""
 
     def test_divide_success(self) -> None:
         """Test successful division."""

@@ -1,4 +1,4 @@
-"""Module for basic arithmetic operations."""
+"""Module for basic calculator operations."""
 
 
 def divide(a: float, b: float) -> float:
