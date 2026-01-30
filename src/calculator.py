@@ -1,19 +1,16 @@
-"""Module for basic calculator operations."""
-
-
-def divide(numerator: float, denominator: float) -> float:
-    """Divide two numbers.
+def divide(a: float, b: float) -> float:
+    """Perform division of two numbers.
 
     Args:
-        numerator: The number to divide from.
-        denominator: The number to divide by.
+        a (float): The numerator.
+        b (float): The denominator.
 
     Returns:
-        The result of the division.
+        float: The result of a divided by b.
 
     Raises:
         ValueError: If the denominator is zero.
     """
-    if denominator == 0:
-        raise ValueError("Denominator cannot be zero.")
-    return numerator / denominator
+    if b == 0:
+        raise ValueError("Denominator cannot be zero")
+    return a / b
