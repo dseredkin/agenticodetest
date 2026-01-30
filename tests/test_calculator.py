@@ -10,11 +10,11 @@ def test_divide_positive() -> None:
 
 
 def test_divide_negative() -> None:
-    """Test division with a negative denominator."""
-    assert divide(10, -2) == -5.0
+    """Test division with negative numbers."""
+    assert divide(-10, 2) == -5.0
 
 
 def test_divide_by_zero() -> None:
     """Test division by zero raises an error."""
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="Cannot divide by zero"):
         divide(10, 0)
