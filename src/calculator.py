@@ -1,11 +1,5 @@
-"""
-Module for basic arithmetic operations.
-"""
-
-
 def divide(a: float, b: float) -> float:
-    """
-    Divide two numbers.
+    """Perform division of two numbers.
 
     Args:
         a (float): The numerator.
@@ -18,5 +12,5 @@ def divide(a: float, b: float) -> float:
         ValueError: If b is zero.
     """
     if b == 0:
-        raise ValueError("Cannot divide by zero")
+        raise ValueError("Denominator cannot be zero.")
     return a / b
