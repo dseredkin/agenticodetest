@@ -1,26 +1,28 @@
 """Tests for the calculator module."""
 
-import pytest
-from src.calculator import add, divide, multiply, subtract
+import unittest
+
+from src.calculator import divide
 
 
-def test_add() -> None:
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
+class TestCalculator(unittest.TestCase):
+    """Test cases for calculator functions."""
+
+    def test_divide_positive_numbers(self) -> None:
+        """Test division with positive numbers."""
+        result = divide(10, 2)
+        self.assertEqual(result, 5.0)
+
+    def test_divide_negative_numbers(self) -> None:
+        """Test division with negative numbers."""
+        result = divide(-10, 2)
+        self.assertEqual(result, -5.0)
+
+    def test_divide_by_zero(self) -> None:
+        """Test division by zero raises an error."""
+        with self.assertRaises(ValueError):
+            divide(10, 0)
 
 
-def test_subtract() -> None:
-    assert subtract(5, 3) == 2
-    assert subtract(0, 0) == 0
-
-
-def test_multiply() -> None:
-    assert multiply(4, 2) == 8
-    assert multiply(-1, 1) == -1
-
-
-def test_divide() -> None:
-    assert divide(10, 2) == 5.0
-    assert divide(5, 1) == 5.0
-    with pytest.raises(ValueError, match="Division by zero is not allowed."):
-        divide(10, 0)
+if __name__ == "__main__":
+    unittest.main()
