@@ -1,6 +1,34 @@
 """Module for basic arithmetic operations."""
 
 
+def add(a: float, b: float) -> float:
+    """
+    Add two numbers.
+
+    Args:
+        a (float): The first number.
+        b (float): The second number.
+
+    Returns:
+        float: The sum of a and b.
+    """
+    return a + b
+
+
+def subtract(a: float, b: float) -> float:
+    """
+    Subtract two numbers.
+
+    Args:
+        a (float): The first number.
+        b (float): The second number.
+
+    Returns:
+        float: The difference of a and b.
+    """
+    return a - b
+
+
 def divide(a: float, b: float) -> float:
     """
     Divide two numbers.
@@ -16,5 +44,5 @@ def divide(a: float, b: float) -> float:
         ValueError: If b is zero.
     """
     if b == 0:
-        raise ValueError("Cannot divide by zero")
+        raise ValueError("Denominator cannot be zero")
     return a / b
