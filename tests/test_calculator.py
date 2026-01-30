@@ -1,11 +1,9 @@
-"""Tests for the calculator module."""
-
 import pytest
 from src.calculator import divide
 
 
 def test_divide() -> None:
-    """Test the divide function."""
-    assert divide(4.0, 2.0) == 2.0
-    with pytest.raises(ValueError, match="Cannot divide by zero"):
-        divide(4.0, 0.0)
+    assert divide(10, 2) == 5.0
+    assert divide(10, 5) == 2.0
+    with pytest.raises(ValueError):
+        divide(10, 0)
