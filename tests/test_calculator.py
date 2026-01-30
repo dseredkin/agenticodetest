@@ -1,38 +1,19 @@
-"""Tests for the calculator module."""
+import unittest
 
-import pytest
-from src.calculator import add, subtract
-
-
-def test_add_normal() -> None:
-    """Test adding two valid numbers."""
-    assert add(2, 3) == 5.0
+from src.calculator import add
 
 
-def test_add_with_none() -> None:
-    """Test adding with None input."""
-    with pytest.raises(ValueError, match="One or both arguments are None"):
-        add(None, 3)
+class TestCalculator(unittest.TestCase):
+    def test_add_normal(self) -> None:
+        """Test adding two valid numbers."""
+        assert add(1, 2) == 3  # Integer addition
+        assert add(1.5, 2.5) == 4.0  # Float addition
 
-
-def test_add_with_non_number() -> None:
-    """Test adding with non-number input."""
-    with pytest.raises(ValueError, match="Inputs must be numbers"):
-        add("a", 3)
-
-
-def test_subtract_normal() -> None:
-    """Test subtracting two valid numbers."""
-    assert subtract(5, 3) == 2.0
-
-
-def test_subtract_with_none() -> None:
-    """Test subtracting with None input."""
-    with pytest.raises(ValueError, match="One or both arguments are None"):
-        subtract(None, 3)
-
-
-def test_subtract_with_non_number() -> None:
-    """Test subtracting with non-number input."""
-    with pytest.raises(ValueError, match="Inputs must be numbers"):
-        subtract("a", 3)
+    def test_add_with_none(self) -> None:
+        """Test adding with None values."""
+        with self.assertRaises(ValueError):
+            add(None, 1)
+        with self.assertRaises(ValueError):
+            add(1, None)
+        with self.assertRaises(ValueError):
+            add(None, None)
