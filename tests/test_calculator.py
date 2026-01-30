@@ -1,5 +1,5 @@
 import pytest
-from src.calculator import add
+from src.calculator import add, subtract
 
 
 def test_add_success() -> None:
@@ -15,3 +15,8 @@ def test_add_with_none() -> None:
         add(1.0, None)
     with pytest.raises(ValueError):
         add(None, None)
+
+
+def test_subtract_success() -> None:
+    """Test successful subtraction of two numbers."""
+    assert subtract(5.0, 3.0) == 2.0
